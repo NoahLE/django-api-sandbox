@@ -122,6 +122,8 @@ INTERNAL_IPS = ['127.0.0.1', 'localhost', ]
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         # use django's django.contrib.auth or read-only for non-auth users
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        'rest_framework.permissions.IsAdminUser',
+    ],
+    'PAGE_SIZE': 10,
 }
