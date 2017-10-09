@@ -7,6 +7,7 @@ from rest_framework import routers, serializers, viewsets
 
 from quickstart import views
 
+
 # Serializers define the API representation
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
