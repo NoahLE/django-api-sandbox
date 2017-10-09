@@ -2,7 +2,6 @@ from django.conf import settings
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect
 from rest_framework import routers, serializers, viewsets
 
 from quickstart import views
@@ -29,7 +28,8 @@ router.register(r'groups', views.GroupViewSet)
 # Wire up the API using URL routing
 urlpatterns = [
     # url(r'^$', lambda r: HttpResponseRedirect('admin/')),
-    url(r'^', include(router.urls)),
+    # url(r'^', include(router.urls)),
+    url(r'^', include('snippets.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
