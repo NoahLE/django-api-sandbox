@@ -1,24 +1,49 @@
 from django.conf.urls import url, include
+from rest_framework import renderers
 from rest_framework.urlpatterns import format_suffix_patterns
 
-from .views import SnippetList, SnippetDetail, SnippetHighlight, UserList, UserDetail, api_root
+from .views import api_root, SnippetViewSet, UserViewSet
+
+snippet_list = SnippetViewSet.as_view({
+    'get': 'list',
+    'post': 'create'
+})
+
+snippet_detail = SnippetViewSet.as_view({
+    'get': 'retrieve',
+    'put': 'update',
+    'patch': 'partial_update',
+    'delete': 'destroy'
+})
+
+snippet_highlight = SnippetViewSet.as_view({
+    'get': 'highlight'
+}, renderer_classes=[renderers.StaticHTMLRenderer])
+
+user_list = UserViewSet.as_view({
+    'get': 'list'
+})
+
+user_detail = UserViewSet.as_view({
+    'get': 'retrieve'
+})
 
 urlpatterns = [
     url(r'^$', api_root),
     url(r'^snippets/$',
-        SnippetList.as_view(),
+        snippet_list,
         name='snippet-list'),
     url(r'^snippets/(?P<pk>[0-9]+)/$',
-        SnippetDetail.as_view(),
+        snippet_detail,
         name='snippet-detail'),
     url(r'^snippets/(?P<pk>[0-9]+)/highlight/$',
-        SnippetHighlight.as_view(),
+        snippet_highlight,
         name='snippet-highlight'),
     url(r'^users/$',
-        UserList.as_view(),
+        user_list,
         name='user-list'),
     url(r'^users/(?P<pk>[0-9]+)/$',
-        UserDetail.as_view(),
+        user_detail,
         name='user-detail')
 ]
 
