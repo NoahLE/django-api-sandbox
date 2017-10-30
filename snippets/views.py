@@ -1,11 +1,8 @@
-from django.http import Http404
 from django.contrib.auth.models import User
 
-from rest_framework.reverse import reverse
-from rest_framework.decorators import api_view, detail_route
+from rest_framework.decorators import detail_route
 from rest_framework.response import Response
-from rest_framework.views import APIView
-from rest_framework import mixins, generics, permissions, renderers, viewsets
+from rest_framework import permissions, renderers, viewsets
 
 from .models import Snippet
 from .serializers import SnippetSerializer, UserSerializer
