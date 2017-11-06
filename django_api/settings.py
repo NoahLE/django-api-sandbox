@@ -126,6 +126,6 @@ REST_FRAMEWORK = {
         # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
         'rest_framework.permissions.IsAdminUser',
     ],
-    'PAGE_SIZE': 10,
     'DEFAULT_PAGINATION_CLASS': None,
+    'PAGE_SIZE': 10,
 }
